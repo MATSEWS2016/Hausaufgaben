@@ -1,6 +1,12 @@
-
+/**
+ * PerKind-Strategie
+ * Kooperiert zweimal und betruegt dann einmal. Dies geschieht periodisch.
+ * @author Alexander Brennecke
+ *
+ */
 public class PerKind implements GefStrategie{
 
+	//Attribute fuer den letzten eigenen Zug und den naechsten
 	boolean next = true;
 	boolean last = true;
 	

@@ -1,4 +1,9 @@
-
+/**
+ * Spite Strategie
+ * Kooperiert so lange, bis der Gegner einmal betruegt 
+ * @author Alexander Brennecke
+ *
+ */
 public class Spite implements GefStrategie{
 
 	boolean next = true;

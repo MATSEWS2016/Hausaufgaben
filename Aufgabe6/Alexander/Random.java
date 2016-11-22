@@ -5,10 +5,16 @@
  *
  */
 public class Random implements GefStrategie{
+    
+    private java.util.Random random;
+    
+    public Random(){
+        random = new java.util.Random();
+    }
 
 	@Override
 	public boolean getNextDecision() {
-		return Math.random()*100 < 5	;
+		return random.nextBoolean();
 	}
 
 	@Override

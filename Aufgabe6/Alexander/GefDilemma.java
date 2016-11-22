@@ -39,7 +39,7 @@ public class GefDilemma {
 			informOtherStrategie(decisions);
 		}
 
-		System.out.println(Arrays.toString(points));
+		printResults(points);
 	}
 
 	/**
@@ -86,5 +86,16 @@ public class GefDilemma {
 			players[i] = players[i] + points;
 		}
 	}
-
+	
+	/**
+	 * Gibt die Namen der Strategien und ihre Punkte aus.
+	 * @param points die erzielten Punkte.
+	 */
+	private void printResults(int[] points){
+	    for(int i = 0; i<players.length;i++){
+	        String name = players[i].getClass().getName();
+	        System.out.println(i+". "+name+": "+points[i]);
+	    }
+	}
+	
 }

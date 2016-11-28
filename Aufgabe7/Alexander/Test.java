@@ -1,5 +1,10 @@
 import java.util.Comparator;
 
+/**
+ * Test Klasse
+ * @author Alexander Brennecke
+ *
+ */
 public class Test {
 	
 	public static void main(String[] args) {
@@ -22,6 +27,12 @@ public class Test {
 		werteAus(einfachNiedrig,einfachHoch,bv);
 	}
 	
+	/**
+	 * Vergleicht zwei Blaetter
+	 * @param b1 Blatt von Spieler 1
+	 * @param b2 Blatt von Soieler 2
+	 * @param cb Comperator, der die Karten vergleicht
+	 */
 	private static void werteAus(Blatt b1, Blatt b2, Comparator<Blatt> cb){
 		int vergleich = cb.compare(b1, b2);
 		String ergebnis ="";

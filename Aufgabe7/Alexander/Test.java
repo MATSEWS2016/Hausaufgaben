@@ -8,7 +8,7 @@ import java.util.Comparator;
 public class Test {
 	
 	public static void main(String[] args) {
-		Blatt drillingNiedrig = new Blatt (new int[]{2,2,2});
+		Blatt drillingNiedrig = new Blatt (new int[]{1,1,1});
 		Blatt drillingHoch = new Blatt (new int[]{9,9,9});
 		
 		Blatt paarNiedrig = new Blatt (new int[]{2,2,3});

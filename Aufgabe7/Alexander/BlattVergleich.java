@@ -2,8 +2,6 @@ import java.util.Comparator;
 
 /**
  * BlattVergleich vergleicht zwei Poker Blaetter nach Wertigkeit
- * Bei dem Algorithmus ist das Haupt Augenmerk auf Flexibilitaet und nicht auf Performance gelegt.
- * Die Anzahl der For-Schleifen verlangsamt den Algorithmus kaum, da sie sehr kurz sind. Diese wurde mit Benchmark Tests getestet.
  * @author Alexander
  *
  */
@@ -11,74 +9,47 @@ public class BlattVergleich implements Comparator<Blatt> {
 
 	@Override
 	public int compare(Blatt b1, Blatt b2) {
-		//Liest die Karten der Blaetter aus
-		int[][] cards = { b1.getCards(), b2.getCards() };
-		//zaehlt die Hauefigkeit jeder Karte
-		int[][] points = countCards(cards);
-
-		int retval = 0;
-		//sucht die High Card, also die hoechste einzelne Karte
-		int[] highCard = find(points,1);
+		return calcPoints(b1)-calcPoints(b2);
+	}
+	
+	/**
+	 * Berechnet die Punkte für ein Blatt. Diese Berechnen sich wie folgt:
+	 * 	Drilling: Karte * 10000 (20000-14000)
+	 *  Paar: Karte * 100 + Karte, die nicht zum Paar gehoert (203 - 1413)
+	 *  Sonst: Summe der Karten
+	 * @param b, das Blatt, dessen Punkte berechner werden sollen.
+	 * @return den Wert des Blattes anhand der bereits beschriebenen Regelung.
+	 */
+	private int calcPoints(Blatt b){
+		int[] cards = b.getCards();
 		
-		//ueberprueft ob es einen Drilling gibt, dann Paar, dann High Card
-		for(int i =3; i>=1;i--){
-			int[] has = find(points,i);
-			//vergleicht die Ergebnisse
-			retval = compare(has); 
-			//wenn beide Spieler die Karte haben wird die High Card ueberprueft
-			if(retval == 0 && has[0] != -1){
-				return compare(highCard);
-			}else if (retval != 0){
-				return retval;
-			}else{
-				continue;
-			}
+		if(compare(cards, 0,1,2)){
+			return 10000*cards[0];
+		}else if(compare(cards, 0,1)){
+			return 100*cards[0] + cards[2];
+		}else if(compare(cards,0,2)){
+			return 100*cards[0] + cards[1];
+		}else if(compare(cards,1,2)){
+			return 100*cards[1] + cards[0];
+		}else{
+			return cards[0]+cards[1]+cards[2];
 		}
 		
-		return retval;
 	}
 	
 	/**
-	 * Vergleicht den ersten und zweiten Wert des gegebenen Arrays miteinander.
-	 * @param compare int Array
-	 * @return 0 wenn int[0] ==int[1]; <0 wenn int[0] < int[1]; >0 wenn int[0]>int[1]
+	 * Ueberprueft ob das uebergebene array an den uebergebenen positionen identisch ist.
+	 * @param ints das Array, das ueberprueft wird
+	 * @param positions die Positionen, die ueberprueft werden sollen.
+	 * @return true= hat an allen uebergeben stellen den gleichen Wert. Sonst false.
 	 */
-	private int compare(int[] compare){
-		return Integer.compare(compare[0],compare[1]); 
-	}
-	
-	/**
-	 * Sucht, ob das points Array an einer Position die Wertigkeit count hat.
-	 * @param points int Array, eine Dimension pro Spieler
-	 * @param count nach der Hauefigkeit wird gesucht
-	 * @return die hoechste Position, an der es die Wertigkeit hat. Fuer jedes sub int[] in points. -1, fall es garnicht auftritt. 
-	 */
-	private int[] find(int[][] points, int count){
-		int[] retval = {-1,-1};
-		//erst spieler 1, dann spieler 2
-		for(int i = 0; i<retval.length;i++){
-			for(int x = points[i].length-1; x>=0;x--){
-				if(points[i][x]==count){
-					retval[i] = x;
-					break;
-				}
+	private boolean compare(int[] ints, int... positions){
+		int comperator = ints[positions[0]];
+		for(int i = 0; i<positions.length;i++){
+			if(ints[positions[i]]!=comperator){
+				return false;
 			}
 		}
-		return retval;
-	}
-	
-	/**
-	 * Zaehlt, wie oft eine Wertigkeit im cards Array vor kommt
- 	 * @param cards die Karten der Spieler
-	 * @return die Haeufigkeit der einzelnen Karten pro Spieler
-	 */
-	private int[][] countCards(int[][] cards) {
-		int[][] retval = new int[cards[0].length][14];
-		for (int i = 0; i<cards.length;i ++) {
-			for(int card : cards[i]){
-				retval[i][card-1] ++;
-			}
-		}
-		return retval;
+		return true;
 	}
 }

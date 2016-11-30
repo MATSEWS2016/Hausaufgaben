@@ -1,4 +1,8 @@
-
+/**
+ * Soll geworfen werden, wenn eine Zahl geschoben werden soll, die nicht existiert.
+ * @author Alexander Brennecke
+ *
+ */
 public class WrongNumberException extends RuntimeException {
 
 	public WrongNumberException(){

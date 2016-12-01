@@ -1,6 +1,6 @@
 /**
  * Just a test class
- * @author Alexander Brennecke
+ * @author Alexander Brenneckeg xd,µ
  *
  */
 public class Test {

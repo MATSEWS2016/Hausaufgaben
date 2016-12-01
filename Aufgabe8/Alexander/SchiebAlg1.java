@@ -20,5 +20,4 @@ public class SchiebAlg1 implements Loesungsalgorithmus {
 		}
 		System.out.println("needed "+counter+" moves");
 	}
-
 }

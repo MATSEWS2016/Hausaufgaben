@@ -1,14 +1,36 @@
 import java.util.ArrayList;
 
+/**
+ * Die Klasse enthaelt im sogenannten "Schiebepuzzle", in dem 15 Plaettchen in
+ * einem 4x4 grossen Rahmen angeordnet sind. Durch horizontales und vertikales
+ * Verschieben koennen die Plaettchen gemischt werden. Das Puzzle besteht darin,
+ * anschliessend die oben abgebildete Reihenfolge wiederherzustellen.
+ * 
+ * @author Intan
+ *
+ */
 public class Schiebepuzzle {
 
 	private int[][] feld;
+
+	/**
+	 * Im Konstruktor wird feld initialisiert.
+	 */
 
 	public Schiebepuzzle() {
 		int[][] array = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 0 } };
 		this.feld = array.clone();
 
 	}
+
+	/**
+	 * Diese Methode ueberprueft ob das Plaettchen Nummer i verschiebbar ist bzw
+	 * ob das Nachbarfeld frei ist.
+	 * 
+	 * @param i
+	 *            die Zahl, die verschieben worden soll.
+	 * @return true wenn das verschiebbar ist. Sonst false
+	 */
 
 	public boolean istVerschiebbar(int i) {
 		if (i < 1 || i > 15) {
@@ -21,6 +43,13 @@ public class Schiebepuzzle {
 		boolean b = Math.abs(indexNummer[1] - leer[1]) == 1 && indexNummer[0] == leer[0];
 		return a || b;
 	}
+
+	/**
+	 * 
+	 * @param i
+	 *            die Zahl, die verschieben worden soll.
+	 * @return integer Feld von Index i.
+	 */
 
 	public int[] getIndex(int i) {
 		int[] indexNummer = { 0, 0 };
@@ -35,6 +64,14 @@ public class Schiebepuzzle {
 		return indexNummer;
 	}
 
+	/**
+	 * Diese Methode schiebt das Plaettchen mit der Nummer i auf den freien
+	 * Platz.
+	 * 
+	 * @param i
+	 *            die Zahl, die verschieben worden soll.
+	 */
+
 	public void schiebe(int i) {
 		if (i < 1 || i > 15) {
 			throw new WrongNumberException();
@@ -48,15 +85,28 @@ public class Schiebepuzzle {
 
 	}
 
+	/**
+	 * Diese Methode mischt das Spiel, indem sie 100 zufaellige (gueltige) Zuege
+	 * durchfuehrt. Anmerkung : Diese Methode garantiert, dass das Puzzle immer
+	 * loesbar ist. Wenn man die Plaettchen zufaellig anordnet, ist das nur mit
+	 * 50% Wahrscheinlichkeit der Fall.
+	 */
+
 	public void mische() {
-		for (int i = 0; i < 100; i++) {
+		int i = 0;
+		while (i < 100) {
 			double d = Math.random() * 15 + 1;
-			int a = (int) d;
-			if (istVerschiebbar(a)) {
-				schiebe(a);
+			int zufaellig = (int) d;
+			if (istVerschiebbar(zufaellig)) {
+				schiebe(zufaellig);
+				i++;
 			}
 		}
 	}
+
+	/**
+	 * Erzeugt einen Ausgabesstring des Spielfelds
+	 */
 
 	public String toString() {
 

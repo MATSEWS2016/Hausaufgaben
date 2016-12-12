@@ -1,3 +1,10 @@
+/**
+ * Schiebe Algorithmus, des zufaellig einen Nachbarn in das freie Feld schiebt
+ * und so versucht die 1 oben links zu platzieren.
+ * 
+ * @author Intan
+ *
+ */
 
 public class SchiebAlg1 implements Loesungsalgorithmus {
 

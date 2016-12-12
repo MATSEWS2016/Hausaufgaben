@@ -1,3 +1,8 @@
+/**
+ * Hier werden die Testfaelle ausgefuehrt.
+ * 
+ * @author Intan
+ */
 
 public class TestFall {
 

@@ -54,11 +54,12 @@ public class Position {
 	 *            eine Position der Schachfigur.
 	 * @return true wenn p gleich wie this ist. Sonst false.
 	 */
-	public boolean equals(Position p) {
-		if (!(this.x == p.x && this.y == p.y)) {
-			return false;
+	public boolean equals(Object o) {
+		if(o instanceof Position){
+			Position p = ((Position)o);
+		    return p.x == x && p.y == y;
 		}
-		return true;
+		return false;
 	}
 
 	/**

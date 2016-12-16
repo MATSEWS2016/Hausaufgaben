@@ -1,7 +1,7 @@
 public class ZahlwortEnglisch extends Zahlwort {
 
-	final String[] ZAHLEN = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve","thirteen","fourteen","fiveteen","sixteen","seventeen","eightteen","nineteen"};
-	final String[] ZEHNER = { "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+	private final String[] ZAHLEN = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve","thirteen","fourteen","fiveteen","sixteen","seventeen","eightteen","nineteen"};
+	private final String[] ZEHNER = { "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
 	public ZahlwortEnglisch(int x) {
 		super(x);

@@ -32,18 +32,13 @@ public class Rook extends Chessman {
 		Position aktuellePos = this.getPosition();
 		int aktuelleX = aktuellePos.getX();
 		int aktuelleY = aktuellePos.getY();
-		for (int x = 1; x < 9; x++) {
-			for (int y = 1; y < 9; y++) {
-				Position pos = new Position(x, y);
-				if (pos.equals(aktuellePos)) {
-					continue;
-				} else {
-					if (x == aktuelleX) {
-						liste.add(new Position(x, y));
-					} else if (y == aktuelleY) {
-						liste.add(new Position(x, y));
-					}
-				}
+		for (int i = 1; i < 9; i++) {
+			if (i != aktuelleX) {
+				liste.add(new Position(i, aktuelleY));
+			}
+
+			if (i != aktuelleY) {
+				liste.add(new Position(aktuelleX, i));
 			}
 		}
 
@@ -55,7 +50,7 @@ public class Rook extends Chessman {
 	 * 
 	 * @return Die Stringdarstellung der Position.
 	 */
-	
+
 	public String toString() {
 		return "Turm: " + this.getPosition().toString();
 	}

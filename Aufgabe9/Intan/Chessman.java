@@ -44,10 +44,11 @@ abstract class Chessman implements Cloneable {
 	 *             falls das Feld nicht in einem Zug erreicht werden.
 	 */
 	public void moveTo(Position pos) {
-		if (this.canMoveTo(pos)) {
-			this.position = pos;
+		if (!canMoveTo(pos)) {
+			throw new RuntimeException("Das Feld kann nicht in einem Zug erreicht werden");
 		}
-		throw new RuntimeException("Das Feld kann nicht in einem Zug erreicht werden");
+		this.position = pos;
+		
 	}
 
 	/**
@@ -69,13 +70,7 @@ abstract class Chessman implements Cloneable {
 	 */
 
 	public boolean canMoveTo(Position pos) {
-		ArrayList<Position> liste = this.getMoveList();
-		for (int i = 0; i < liste.size(); i++) {
-			if (this.position.equals(liste.get(i))) {
-				return true;
-			}
-		}
-		return false;
+		return getMoveList().contains(pos);
 	}
 
 }

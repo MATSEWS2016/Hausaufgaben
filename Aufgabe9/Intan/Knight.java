@@ -30,10 +30,7 @@ public class Knight extends Chessman {
 		int aktuelleY = aktuellePos.getY();
 		for (int x = 1; x < 9; x++) {
 			for (int y = 1; y < 9; y++) {
-				Position pos = new Position(x, y);
-				if (pos.equals(aktuellePos)) {
-					continue;
-				} else if ((Math.abs(aktuelleX - x) == 2) && (Math.abs(aktuelleY - y) == 1)) {
+				if ((Math.abs(aktuelleX - x) == 2) && (Math.abs(aktuelleY - y) == 1)) {
 					liste.add(new Position(x, y));
 				} else if ((Math.abs(aktuelleY - y) == 2) && (Math.abs(aktuelleX - x) == 1)) {
 					liste.add(new Position(x, y));

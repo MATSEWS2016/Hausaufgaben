@@ -1,7 +1,7 @@
 public class ZahlwortDeutsch extends Zahlwort {
 
-	final String[] ZAHLEN = { "ein", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwoelf","dreizehn","vierzehn","fuenfzehn","sechzehn","siebzehn","achtzehn","neunzehn"};
-	final String[] ZEHNER = { "zwanzig", "dreissig", "vierzig", "fuenfizg", "sechzig", "siebzig", "achtzig", "neunzig" };
+	private final String[] ZAHLEN = { "ein", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwoelf","dreizehn","vierzehn","fuenfzehn","sechzehn","siebzehn","achtzehn","neunzehn"};
+	private final String[] ZEHNER = { "zwanzig", "dreissig", "vierzig", "fuenfizg", "sechzig", "siebzig", "achtzig", "neunzig" };
 
 	public ZahlwortDeutsch(int x) {
 		super(x);

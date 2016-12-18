@@ -28,8 +28,9 @@ public class ZahlwortDeutsch extends Zahlwort {
 				retval+=ZAHLEN[splitted[0]-1]+"und";
 			}
 			retval+= ZEHNER[splitted[1]-2];
-		}else{
-			retval+= ZAHLEN[x%100-1];
+		}else if(splitted[0] != 0 && splitted[1]!=0){
+			String s = ZAHLEN[x%100-1];
+			retval = retval +s;
 		}
 		
 		return retval;

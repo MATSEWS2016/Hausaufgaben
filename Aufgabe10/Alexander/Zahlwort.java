@@ -4,7 +4,7 @@ public abstract class Zahlwort {
 	
 	public Zahlwort(int x) {
 		if (x<=0 || x>=10000) {
-			throw new NumberFormatException("Zahl nicht im "+
+			throw new NumberFormatException("Zahl "+x+" nicht im "+
 			" Bereich zwischen 1 und 9999");
 		} else {
 			this.x = x;

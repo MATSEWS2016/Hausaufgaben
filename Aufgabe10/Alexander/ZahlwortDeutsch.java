@@ -1,12 +1,22 @@
+/**
+ * Erzeugt das ausgeschriebene Wort einer Zahl auf Deutsch
+ * @author Alexander Brennecke
+ *
+ */
 public class ZahlwortDeutsch extends Zahlwort {
 
 	private final String[] ZAHLEN = { "ein", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwoelf","dreizehn","vierzehn","fuenfzehn","sechzehn","siebzehn","achtzehn","neunzehn"};
 	private final String[] ZEHNER = { "zwanzig", "dreissig", "vierzig", "fuenfizg", "sechzig", "siebzig", "achtzig", "neunzig" };
 
+	/**
+	 * Konstruktor, ruft super Konstruktor auf
+	 * @param x die Zahl zwischen 1 und 9999
+	 */
 	public ZahlwortDeutsch(int x) {
 		super(x);
 	}
 
+	@Override
 	public String getWortString() {
 		String retval = "";
 		int[] splitted = splitNum();
@@ -36,6 +46,7 @@ public class ZahlwortDeutsch extends Zahlwort {
 		return retval;
 	}
 
+	@Override
 	public String getSprache() {
 		return "deutsch";
 	}

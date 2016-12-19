@@ -15,13 +15,25 @@ public abstract class Zahlwort {
 		return x+"";
 	}
 	
+	/**
+	 * Wandelt die Zahl in ein ausgeschriebenes Wort
+	 * @return die umgewandelte Zahl als String
+	 */
 	public abstract String getWortString();
+	
+	/**
+	 * @return den Namen der Sprache.
+	 */
 	public abstract String getSprache();
 	
 	public String toString() {
 		return "Die Zahl "+x+" schreibt man auf " + getSprache() + ": "+getWortString()+".";
 	}
 	
+	/**
+	 * Splitted die Zahl in ein int[] der groese 4.
+	 * @return Das erzeugt int[]
+	 */
 	protected int[] splitNum(){
 		int[] retval = new int[4];
 		int num  = x;

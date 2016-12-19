@@ -1,12 +1,22 @@
+/**
+ * Erzeugt das ausgeschriebene Wort einer Zahl auf Englisch
+ * @author Alexander Brennecke
+ *
+ */
 public class ZahlwortEnglisch extends Zahlwort {
 
 	private final String[] ZAHLEN = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve","thirteen","fourteen","fiveteen","sixteen","seventeen","eightteen","nineteen"};
 	private final String[] ZEHNER = { "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
+	/**
+	 * Konstruktor, ruft super Konstruktor auf
+	 * @param x die Zahl zwischen 1 und 9999
+	 */
 	public ZahlwortEnglisch(int x) {
 		super(x);
 	}
 
+	@Override
 	public String getWortString() {
 		String retval = "";
 		int[] splitted = splitNum();
@@ -35,7 +45,8 @@ public class ZahlwortEnglisch extends Zahlwort {
 		return retval;
 	}
 
+	@Override
 	public String getSprache() {
-		return "deutsch";
+		return "englisch";
 	}
 }
